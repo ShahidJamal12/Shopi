@@ -1,20 +1,7 @@
 /* eslint-disable react/prop-types */
 import { IoIosArrowForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import ReactLoading from 'react-loading';
 const HeroSection = (props) => {
-  const {isLoading} = useAuth0()
-  if(isLoading){
-    return(
-      <>
-      {/* <div className="relative top-20 text-3xl w-screen h-screen flex justify-center items-center">Loading...</div> */}
-      <div className="w-screen h-screen relative top-20 text-3xl flex justify-center items-center ">
-        <ReactLoading type="balls" color="black" className=" w-20 h-20" />
-      </div>
-      </>
-    )
-  }
   return (
     <>
         <section className="relative top-20 w-screen h-screen z-0 bg-slate-100 p-1 bg-background-girl bg-contain bg-no-repeat bg-right flex justify-center items-start flex-col px-24 max-sm:px-10 max-sm:bg-[13px] 2xl:px-36">

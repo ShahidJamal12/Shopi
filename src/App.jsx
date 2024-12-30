@@ -11,8 +11,10 @@ import { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 const count = createContext()
 const apiData = createContext()
+const searchData = createContext()
 function App() {
   const [cartItems,setCartItems] = useState([])
+  const [search,setSearch] = useState(false)
   // const APIdata = [
   //   {
   //     "id": "thapaserialnoa",
@@ -1242,6 +1244,7 @@ function App() {
   }, []);
   return (
     <>
+    <searchData.Provider value={{search,setSearch}}>
     <apiData.Provider value={APIData_02}>
     <count.Provider value={{cartItems,setCartItems}}>
     <Router>
@@ -1257,11 +1260,13 @@ function App() {
     </Router>
     </count.Provider>
     </apiData.Provider>
+    </searchData.Provider>
     </>
   )
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export {count};
-export {apiData}
-export default App
+export {apiData};
+export {searchData}
+export default App;

@@ -10,10 +10,10 @@ const NavBar = () => {
   return (
     <header >
       <nav className="h-20 w-screen bg-[#0f0f0f] flex justify-between items-center px-9 pr-12 text-white fixed 2xl:h-28 z-50">
-        <div className="logo text-4xl max-sm:text-3xl font-mono font-bold 2xl:text-5xl">
+        <div className="logo text-4xl max-mini:text-3xl font-mono font-bold 2xl:text-5xl">
             <NavLink to="/">Shopi</NavLink>
         </div>
-        <ul className="flex justify-center items-center gap-4 uppercase max-sm:flex-col max-sm:fixed max-sm:w-screen max-sm:h-0 max-sm:py-0 max-sm:left-0 max-sm:bg-violet-600 max-sm:top-20 max-sm:text-xl max-sm:gap-16 max-sm:overflow-hidden transition-all duration-500 2xl:text-2xl" ref={slideRef}>
+        <ul className="flex justify-center items-center gap-4 uppercase max-mini:flex-col max-mini:fixed max-mini:w-screen max-mini:h-0 max-mini:py-0 max-mini:left-0 max-mini:bg-violet-600 max-mini:top-20 max-mini:text-xl max-mini:gap-16 max-mini:overflow-hidden transition-all duration-500 2xl:text-2xl" ref={slideRef}>
           <li className="hover:text-violet-600 transition-all">
             <NavLink to="/">Home</NavLink>
           </li>
@@ -33,8 +33,8 @@ const NavBar = () => {
                   Log In
               </button>
             </li>):(
-              <div className="flex justify-center items-center gap-5 max-sm:flex-col max-sm:gap-10 ">
-                <div className="text-slate-500 text-sm lowercase max-sm:text-slate-900 max-sm:text-xl">Welcome, {user.name}</div>
+              <div className="flex justify-center items-center gap-5 max-mini:flex-col max-mini:gap-10 ">
+                <div className="text-slate-500 text-sm lowercase max-mini:text-slate-900 max-mini:text-xl">Welcome, {user.name}</div>
               <li>
               <button className="px-5 py-[6px] bg-white text-black uppercase hover:text-white hover:bg-violet-700 transition-all hover:rounded-md hover:scale-110" onClick={() => logout()}>
                   Log Out
@@ -50,9 +50,9 @@ const NavBar = () => {
             </NavLink>
           </li>
         </ul>
-          <div className="hidden max-sm:flex" onClick={()=>{
-            slideRef.current.classList.toggle("max-sm:py-5")
-            slideRef.current.classList.toggle("max-sm:h-screen")
+          <div className="hidden max-mini:flex" onClick={()=>{
+            slideRef.current.classList.toggle("max-mini:py-5")
+            slideRef.current.classList.toggle("max-mini:h-screen")
             changeRef.current.classList.toggle("fa-x")
             changeRef.current.classList.toggle("text-2xl")
             changeRef.current.classList.toggle("fa-bars")

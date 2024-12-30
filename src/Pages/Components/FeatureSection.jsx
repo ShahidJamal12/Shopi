@@ -15,13 +15,14 @@ const FeatureSection = () => {
         </h1>
         <div className="products flex justify-center items-center mt-16 gap-10 flex-wrap">
           {featuredData.map((value, index) => {
+            let price = new Intl.NumberFormat("en-IN", {maximumSignificantDigits: 3}).format(value.price * 85.39)
             return (
               <Card
                 imgSrc={value.images[1]}
                 key={index}
                 id={value.id}
                 cardTitle={value.title}
-                price={value.price * 85.39}
+                price={price}
                 indexNumber={value.id}
                 indexNum={value.id}
                 category={value.category.name}

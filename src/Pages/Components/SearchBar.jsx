@@ -1,7 +1,8 @@
 import { useRef, useContext } from "react";
-import { apiData } from "../../App";
+import { apiData, searchData } from "../../App";
 const SearchBar = () => {
     const APIdata = useContext(apiData);
+    const search = useContext(searchData)
     console.log(APIdata)
     let valRef = useRef(null)
   return (
@@ -11,9 +12,11 @@ const SearchBar = () => {
           type="text"
           placeholder="Search your product here"
           ref={valRef}
-          className="bg-transparent outline-none px-4 w-80 text-black"
+          className="bg-transparent outline-none px-4 w-80 text-black max-mini:w-11/12"
           onKeyUp={()=>{
-            console.log(valRef.current.value)
+            let a = valRef.current.value;
+            search.setSearch(a)
+            console.log(search)
         }}
         />
         <button>
