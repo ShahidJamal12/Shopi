@@ -11,7 +11,7 @@ const Singleproduct = () => {
   const singleProductID = APIData.filter((item)=> item.id === b)
   console.log(APIData,singleProductID[0].title)
   const imgSrcReff = useRef(null)
-  const [Count,setCount] = useState(0)
+  const [Count,setCount] = useState(1)
   const handleAddCart = ()=>{
     if(Count === 0){
       alert("Insert the quantity")
@@ -112,8 +112,8 @@ const Singleproduct = () => {
               </div>
               <div className="flex justify-center items-center border-2 border-slate-300 text-slate-500 rounded-md">
               <i className="fa-solid fa-minus h-8 w-8 flex justify-center items-center border-r-2 border-slate-300" onClick={()=>{
-                if(Count === 0){
-                  setCount(0)
+                if(Count === 1){
+                  setCount(1)
                 }
                 else{
                   setCount(Count-1)
