@@ -1,7 +1,9 @@
 import { useContext, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import { apiData } from "../App"
+import { count } from "../App"
 const Singleproduct = () => {
+  let cartValue = useContext(count)
   let {id} = useParams()
   let b = Number(id)
   console.log(b)
@@ -9,7 +11,19 @@ const Singleproduct = () => {
   const singleProductID = APIData.filter((item)=> item.id === b)
   console.log(APIData,singleProductID[0].title)
   const imgSrcReff = useRef(null)
-  const [count,setCount] = useState(0)
+  const [Count,setCount] = useState(0)
+  const handleAddCart = ()=>{
+    if(Count === 0){
+      alert("Insert the quantity")
+    }
+    else{
+      let a = APIData[id-1]
+      a.quantity = Count
+      cartValue.setCartItems([...cartValue.cartItems,a])
+      console.log(a)
+      alert("Item Added to Cart...")
+    }
+  }
   return (
     <>
      {
@@ -98,29 +112,29 @@ const Singleproduct = () => {
               </div>
               <div className="flex justify-center items-center border-2 border-slate-300 text-slate-500 rounded-md">
               <i className="fa-solid fa-minus h-8 w-8 flex justify-center items-center border-r-2 border-slate-300" onClick={()=>{
-                if(count === 0){
+                if(Count === 0){
                   setCount(0)
                 }
                 else{
-                  setCount(count-1)
+                  setCount(Count-1)
                 }
               }}></i>
               <div className="h-8 w-8 flex justify-center items-center text-xl">
-                {count}
+                {Count}
               </div>
               <i className="fa-solid fa-add h-8 w-8 flex justify-center items-center border-l-2 border-slate-300" onClick={()=>{
-                if(count === 10){
-                  setCount(count)
+                if(Count === 10){
+                  setCount(Count)
                 }
                 else{
-                  setCount(count+1)
+                  setCount(Count+1)
                 }
               }}></i>
               </div>
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-violet-900">₹{new Intl.NumberFormat("en-IN", {maximumSignificantDigits: 3}).format(singleProductID[0].price * 85.39)}</span>
-              <button className="flex ml-auto text-white bg-violet-700 border-0 py-2 px-4 focus:outline-none hover:bg-violet-600 rounded justify-center items-center gap-2">Add To Cart <i className="fa-solid fa-cart-shopping"></i> </button>
+              <button onClick={handleAddCart}  className="flex ml-auto text-white bg-violet-700 border-0 py-2 px-4 focus:outline-none hover:bg-violet-600 rounded justify-center items-center gap-2">Add To Cart <i className="fa-solid fa-cart-shopping"></i></button>
             </div>
           </div>
         </div>

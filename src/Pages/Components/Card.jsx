@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const Card = (props) => {
   return (
-    <NavLink to={`/singleproduct/${props.SP_id}`} target="_blank">
+    <NavLink to={`/singleproduct/${props.SP_id}`}>
       <div className="card bg-white text-black shadow-xl w-64 h-[448px] shadow-slate-400 rounded-sm flex justify-center items-start flex-col gap-3 pb-4 transition-all hover:scale-105 hover:rounded-lg hover:shadow-slate-500 ">
       <div
         className="img w-64 h-64 bg-white bg-no-repeat bg-cover transition-all hover:opacity-90"
