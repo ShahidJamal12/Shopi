@@ -18,14 +18,19 @@ const Singleproduct = () => {
       alert("Insert the quantity")
     }
     else{
-      let a = APIData[id-1]
-      a.quantity = Count
-      cartValue.setCartItems([...cartValue.cartItems,a])
-      console.log(a)
-      alert("Item Added to Cart...")
+      if(cartValue.cartItems.find((item)=> item.title == singleProductID[0].title)){
+        alert("Iteam alreay exits in cart")
+      }
+      else{
+        let a = APIData[id-1]
+        a.quantity = Count
+        cartValue.setCartItems([...cartValue.cartItems,a])
+        console.log(a)
+        alert("Item Added to Cart...")
+      }
     }
   }
-  
+
   return (
     <>
      {
