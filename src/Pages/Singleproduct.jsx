@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import { apiData } from "../App"
 import { count } from "../App"
+import { NavLink } from "react-router-dom"
 const Singleproduct = () => {
   let cartValue = useContext(count)
   let {id} = useParams()
@@ -24,6 +25,7 @@ const Singleproduct = () => {
       alert("Item Added to Cart...")
     }
   }
+  
   return (
     <>
      {
@@ -31,17 +33,17 @@ const Singleproduct = () => {
       <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-row max-minii:flex-wrap max-minii:justify-center">
-          <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center rounded" src={singleProductID[0].images[0]} ref={imgSrcReff}/>
+          <img alt="Product Images" className="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center rounded" src={singleProductID[0].images[0]} ref={imgSrcReff}/>
           <div className="flex flex-col justify-center items-center gap-4 mx-5 max-minii:flex-row max-minii:justify-center max-minii:mt-5">
-          <img src={singleProductID[0].images[0]} alt="Alternate_01" className="w-16" onClick={()=>{
+          <img src={singleProductID[0].images[0]} alt="Alternate_01" className="w-16" onMouseEnter={()=>{
             // console.log(singleProductID[0].images[0])
             imgSrcReff.current.src = singleProductID[0].images[0]
           }}/>
-          <img src={singleProductID[0].images[1]} alt="Alternate_02" className="w-16" onClick={()=>{
+          <img src={singleProductID[0].images[1]} alt="Alternate_02" className="w-16" onMouseEnter={()=>{
             console.log(singleProductID[0].images[1])
             imgSrcReff.current.src = singleProductID[0].images[1]
           }}/>
-          <img src={singleProductID[0].images[2]} alt="Alternate_03" className="w-16" onClick={()=>{
+          <img src={singleProductID[0].images[2]} alt="Alternate_03" className="w-16" onMouseEnter={()=>{
             console.log(singleProductID[0].images[2])
             imgSrcReff.current.src = singleProductID[0].images[2]
           }}/>
@@ -132,9 +134,11 @@ const Singleproduct = () => {
               }}></i>
               </div>
             </div>
-            <div className="flex">
+            <div className="flex justify-between items-center">
               <span className="title-font font-medium text-2xl text-violet-900">₹{new Intl.NumberFormat("en-IN", {maximumSignificantDigits: 3}).format(singleProductID[0].price * 85.39)}</span>
+              <NavLink to="/cart">
               <button onClick={handleAddCart}  className="flex ml-auto text-white bg-violet-700 border-0 py-2 px-4 focus:outline-none hover:bg-violet-600 rounded justify-center items-center gap-2">Add To Cart <i className="fa-solid fa-cart-shopping"></i></button>
+              </NavLink>
             </div>
           </div>
         </div>

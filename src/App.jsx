@@ -8,12 +8,21 @@ import Cart from './Pages/Cart'
 import Error from './Pages/Error'
 import Singleproduct from './Pages/Singleproduct'
 import { createContext, useState, useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 const count = createContext()
 const apiData = createContext()
 const searchData = createContext()
 function App() {
-  const [cartItems,setCartItems] = useState([])
+  const getLocalCartData = ()=>{
+    let cartData = localStorage.getItem("CartData")
+    if(JSON.parse(cartData) == []){
+      return [];
+    }
+    else{
+      return JSON.parse(cartData);
+    }
+  }
+  const [cartItems,setCartItems] = useState(getLocalCartData)
   const [search,setSearch] = useState(false)
   // const APIdata = [
   //   {
@@ -1226,22 +1235,28 @@ function App() {
       }
     }
   ]
-  const apiReq = async (url)=>{
-    try {
-      let res = await axios(url)
-      let resData = await res.data
-      // console.log(res)
-      // console.log(resData)
-      return resData;
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    return () => {
-      apiReq("https://api.escuelajs.co/api/v1/products/")
-    };
-  }, []);
+  // const apiReq = async (url)=>{
+  //   try {
+  //     let res = await axios(url)
+  //     let resData = await res.data
+  //     // console.log(res)
+  //     // console.log(resData)
+  //     return resData;
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  // useEffect(() => {
+  //   // return () => {
+  //   //   // apiReq("https://api.escuelajs.co/api/v1/products/")
+  //   //   // console.log("")
+
+  //   // };
+  //   localStorage.setItem("cartData", JSON.stringify(cartItems))
+  // }, []);
+  useEffect(()=>{
+    localStorage.setItem("CartData", JSON.stringify(cartItems))
+  },[cartItems])
   return (
     <>
     <searchData.Provider value={{search,setSearch}}>

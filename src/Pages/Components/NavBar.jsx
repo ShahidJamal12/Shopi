@@ -15,16 +15,16 @@ const NavBar = () => {
         </div>
         <ul className="flex justify-center items-center gap-4 uppercase max-mini:flex-col max-mini:fixed max-mini:w-screen max-mini:h-0 max-mini:py-0 max-mini:left-0 max-mini:bg-violet-600 max-mini:top-20 max-mini:text-xl max-mini:gap-16 max-mini:overflow-hidden transition-all duration-500 2xl:text-2xl" ref={slideRef}>
           <li className="hover:text-violet-600 transition-all">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" className={({isActive})=>isActive ? "text-violet-600" : ""}>Home</NavLink>
           </li>
           <li className="hover:text-violet-600 transition-all">
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about" className={({isActive})=>isActive ? "text-violet-600" : ""}>About</NavLink>
           </li>
           <li className="hover:text-violet-600 transition-all">
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/contact" className={({isActive})=>isActive ? "text-violet-600" : ""}>Contact</NavLink>
           </li>
           <li className="hover:text-violet-600 transition-all">
-            <NavLink to="/shop">Shop</NavLink>
+            <NavLink to="/shop" className={({isActive})=>isActive ? "text-violet-600" : ""}>Shop</NavLink>
           </li>
           {
             !isAuthenticated? 
@@ -44,7 +44,7 @@ const NavBar = () => {
             )
           }
           <li className="relative">
-            <NavLink to="/cart">
+            <NavLink to="/cart" className={({isActive})=>isActive ? "text-violet-200" : ""}>
               <i className="fa-solid fa-cart-shopping text-3xl 2xl:text-5xl"></i>
               <div className="absolute bottom-1/2 left-1/2 bg-violet-800 text-white px-1.5 rounded-full 2xl:bottom-1/2 2xl:left-9 2xl:text-3xl ">{cartValue.cartItems.length}</div>
             </NavLink>

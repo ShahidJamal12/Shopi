@@ -11,7 +11,8 @@ export default {
       },
       screens:{
         "mini": "841px",
-        "minii": "1023px"
+        "minii": "1023px",
+        "cartMini": "428px"
       }
     },
   },
