@@ -26,7 +26,13 @@ const Singleproduct = () => {
       else{
         let a = APIData[id-1]
         a.quantity = Count
+        if(singleProductID[0].category.name.includes("Electronic")){
+          console.log("hello")
+        }
+        else{
         a.Size = size
+        }
+        if(singleProductID[0].category.name.includes(""))
         cartValue.setCartItems([...cartValue.cartItems,a])
         console.log(a)
         alert("Item Added to Cart...")
@@ -104,7 +110,14 @@ const Singleproduct = () => {
                 <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
                 <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
               </div> */}
-              <div className="flex items-center">
+              {
+                singleProductID[0].category.name.includes("Electronic")?
+                (
+                  <>
+                  </>
+                ):
+                (
+                  <div className="flex items-center">
                 <span className="mr-3">Size</span>
                 <div className="relative">
                   <select ref={sizeReff} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-violet-500 text-base pl-3 pr-10" onChange={()=>{
@@ -123,6 +136,8 @@ const Singleproduct = () => {
                   </span>
                 </div>
               </div>
+                )
+              }
               <div className="flex justify-center items-center border-2 border-slate-300 text-slate-500 rounded-md">
               <i className="fa-solid fa-minus h-8 w-8 flex justify-center items-center border-r-2 border-slate-300" onClick={()=>{
                 if(Count === 1){
