@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom"
 const Singleproduct = () => {
   let cartValue = useContext(count)
   let {id} = useParams()
+  let sizeReff = useRef(null)
   let b = Number(id)
   console.log(b)
   const APIData = useContext(apiData)
@@ -13,6 +14,7 @@ const Singleproduct = () => {
   console.log(APIData,singleProductID[0].title)
   const imgSrcReff = useRef(null)
   const [Count,setCount] = useState(1)
+  const [size, setSize] = useState("SM")
   const handleAddCart = ()=>{
     if(Count === 0){
       alert("Insert the quantity")
@@ -24,6 +26,7 @@ const Singleproduct = () => {
       else{
         let a = APIData[id-1]
         a.quantity = Count
+        a.Size = size
         cartValue.setCartItems([...cartValue.cartItems,a])
         console.log(a)
         alert("Item Added to Cart...")
@@ -104,11 +107,14 @@ const Singleproduct = () => {
               <div className="flex items-center">
                 <span className="mr-3">Size</span>
                 <div className="relative">
-                  <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-violet-500 text-base pl-3 pr-10">
-                    <option>SM</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
+                  <select ref={sizeReff} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-violet-500 text-base pl-3 pr-10" onChange={()=>{
+                    alert(sizeReff.current.value)
+                    setSize(sizeReff.current.value)
+                  }}>
+                    <option value="SM">SM</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                   </select>
                   <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
